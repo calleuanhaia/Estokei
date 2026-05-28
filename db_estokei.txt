@@ -1,0 +1,85 @@
+-- Criação do banco de dados
+CREATE DATABASE IF NOT EXISTS estokei
+CHARACTER SET utf8mb4 
+COLLATE utf8mb4_unicode_ci;
+
+USE estokei;
+
+-- ==========================================
+-- 1. TABELA DE USUÁRIOS
+-- Atende a: "Configuração Inicial do Estokei"
+-- ==========================================
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha_hash VARCHAR(255) NOT NULL,
+    perfil ENUM('ADMIN', 'OPERADOR') DEFAULT 'OPERADOR' COMMENT 'Define as permissões no sistema',
+    ativo BOOLEAN DEFAULT TRUE,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ==========================================
+-- 2. TABELA DE FORNECEDORES (Apoio)
+-- Atende a: "Registro de Entradas (Recebimento)"
+-- ==========================================
+CREATE TABLE fornecedores (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    contato VARCHAR(100) NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ==========================================
+-- 3. TABELA DE PRODUTOS (Catálogo)
+-- Atende a: "Lista de Produtos" e "Dashboard"
+-- ==========================================
+CREATE TABLE produtos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sku VARCHAR(50) NOT NULL UNIQUE COMMENT 'Código interno do lojista',
+    codigo_barras VARCHAR(50) UNIQUE NULL COMMENT 'EAN/GTIN para leitura por câmera/leitor',
+    nome VARCHAR(150) NOT NULL,
+    descricao TEXT NULL,
+    
+    -- Controle de Estoque
+    quantidade_atual INT NOT NULL DEFAULT 0 COMMENT 'Foca em unidades. Troque para DECIMAL(10,3) se vender a granel',
+    estoque_minimo INT NOT NULL DEFAULT 0 COMMENT 'Gatilho para o alerta do Dashboard',
+    
+    -- Valores (Estimativa exigida no Dashboard)
+    preco_custo DECIMAL(10,2) NULL,
+    preco_venda DECIMAL(10,2) NULL,
+    
+    -- Organização Física Básica
+    localizacao VARCHAR(100) NULL COMMENT 'Ex: Prateleira A, Nível 1',
+    imagem_url VARCHAR(255) NULL,
+    
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    atualizado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- ==========================================
+-- 4. TABELA DE MOVIMENTAÇÕES (Histórico)
+-- Atende a: "Entradas", "Saídas" e "Relatório Básico"
+-- ==========================================
+CREATE TABLE movimentacoes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    produto_id INT NOT NULL,
+    usuario_id INT NOT NULL COMMENT 'Responsável pela ação',
+    
+    tipo ENUM('ENTRADA', 'SAIDA') NOT NULL,
+    quantidade INT NOT NULL COMMENT 'Quantidade movimentada nesta transação',
+    
+    -- Motivos mapeados no escopo
+    motivo VARCHAR(50) NOT NULL COMMENT 'Ex: Compra, Venda, Quebra, Consumo Interno, Validade',
+    
+    -- Dados opcionais para Entradas
+    fornecedor_id INT NULL,
+    custo_unitario DECIMAL(10,2) NULL COMMENT 'Preço pago no momento da entrada',
+    
+    data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    -- Chaves Estrangeiras (Relacionamentos)
+    FOREIGN KEY (produto_id) REFERENCES produtos(id) ON DELETE RESTRICT,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE RESTRICT,
+    FOREIGN KEY (fornecedor_id) REFERENCES fornecedores(id) ON DELETE SET NULL
+);
