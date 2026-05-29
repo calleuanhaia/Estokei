@@ -19,12 +19,15 @@
             $insert->execute();
 
             echo "<br>Usuário cadastrado com sucesso!";
+
+            header("Location: ../index.php?page=lista_usuarios.php");
+            exit();
         } catch(PDOException $e){
             echo "Erro ao cadastrar".$e->getMessage();
         }
 
     }else{
-        header("Location: ../home.php");
+        header("Location: ../index.php");
         exit();
     }
 

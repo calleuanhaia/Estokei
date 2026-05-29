@@ -96,7 +96,7 @@
             </div>
 
             <!-- Formulário -->
-            <form onsubmit="event.preventDefault(); /* Adicione a lógica de login aqui */" class="space-y-5">
+            <form method="POST" action="api/login_usuario.php" class="space-y-5">
                 
                 <!-- Campo de E-mail -->
                 <div>

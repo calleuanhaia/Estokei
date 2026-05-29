@@ -17,12 +17,15 @@
             $insert->execute();
 
             echo "<br>Produto cadastrado com sucesso!";
+
+            header("Location: ../index.php?page=lista_produtos.php");
+            exit();
         } catch(PDOException $e){
             echo "Erro ao cadastrar".$e->getMessage();
         }
 
     }else{
-        header("Location: ../home.php");
+        header("Location: ../index.php");
         exit();
     }
 ?>

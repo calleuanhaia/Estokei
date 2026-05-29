@@ -16,47 +16,47 @@
             <nav class="flex-1 overflow-y-auto py-6 px-4 space-y-2">
                 <p class="px-4 text-xs font-semibold text-estokei-textMuted uppercase tracking-wider mb-2">Menu Principal</p>
                 
-                <a href="home.php?page=exemplo.php" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-estokei-bg text-estokei-accent border border-estokei-accent/20 shadow-neon transition-all">
+                <a href="index.php?page=exemplo.php" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-estokei-bg text-estokei-accent border border-estokei-accent/20 shadow-neon transition-all">
                     <i class="ph ph-squares-four text-xl"></i>
                     <span class="font-medium">Painel Principal</span>
                 </a>
 
-                <a href="index.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
+                <a href="index.php?page=sobre.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
                     <i class="ph ph-airplay text-xl group-hover:text-estokei-accent transition-colors"></i>
                     <span class="font-medium">Sobre o Sistema</span>
                 </a>
 
                 <p class="px-4 text-xs font-semibold text-estokei-textMuted uppercase tracking-wider mb-2">Cadastros</p>
 
-                <a href="home.php?page=cadastro_usuario.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
+                <a href="index.php?page=cadastro_usuario.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
                     <i class="ph ph-user-circle-plus text-xl group-hover:text-estokei-accent transition-colors"></i>
                     <span class="font-medium">Cadastro Usuário</span>
                     <!-- <span class="ml-auto bg-estokei-accent text-estokei-bg text-xs font-bold px-2 py-0.5 rounded-full">12</span> -->
                 </a>
 
-                <a href="home.php?page=cadastro_fornecedores.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
+                <a href="index.php?page=cadastro_fornecedores.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
                     <i class="ph ph-identification-card text-xl group-hover:text-estokei-accent transition-colors"></i>
                     <span class="font-medium">Cadastro Fornecedores</span>
                 </a>
 
-                <a href="home.php?page=cadastro_produtos.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
+                <a href="index.php?page=cadastro_produtos.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
                     <i class="ph ph-circles-three-plus text-xl group-hover:text-estokei-accent transition-colors"></i>
                     <span class="font-medium">Cadastro Produtos</span>
                 </a>
 
                 <p class="px-4 text-xs font-semibold text-estokei-textMuted uppercase tracking-wider mb-2">Listagens</p>
 
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
+                <a href="index.php?page=lista_usuarios.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
                     <i class="ph ph-user-list text-xl group-hover:text-estokei-accent transition-colors"></i>
                     <span class="font-medium">Listar Usuários</span>
                 </a>
 
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
+                <a href="index.php?page=lista_fornecedores.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
                     <i class="ph ph-identification-badge text-xl group-hover:text-estokei-accent transition-colors"></i>
                     <span class="font-medium">Listar Fornecedores</span>
                 </a>
 
-                <a href="#" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
+                <a href="index.php?page=lista_produtos.php" class="flex items-center gap-3 px-4 py-3 rounded-xl text-estokei-textMuted hover:text-white hover:bg-estokei-panelHover transition-all group">
                     <i class="ph ph-file text-xl group-hover:text-estokei-accent transition-colors"></i>
                     <span class="font-medium">Listar Produtos</span>
                 </a>
@@ -82,7 +82,9 @@
                         <p class="text-sm font-semibold text-white truncate">Admin Sistema</p>
                         <p class="text-xs text-estokei-textMuted truncate">admin@estokei.com.br</p>
                     </div>
-                    <i class="ph ph-sign-out text-estokei-textMuted hover:text-estokei-danger transition-colors text-xl"></i>
+                    <a href="login.php">
+                        <i class="ph ph-sign-out text-estokei-textMuted hover:text-estokei-danger transition-colors text-xl"></i>
+                    </a>
                 </div>
             </div>
         </aside>
