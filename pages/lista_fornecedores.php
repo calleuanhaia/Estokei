@@ -27,6 +27,7 @@
                     <th class="p-4 font-semibold whitespace-nowrap">Fornecedor</th>
                     <th class="p-4 font-semibold whitespace-nowrap">Contato</th>
                     <th class="p-4 font-semibold whitespace-nowrap">Data de Criação</th>
+                    <th class="p-4 font-semibold whitespace-nowrap">Ações</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-white/5 text-sm">
@@ -60,6 +61,16 @@
                             <!-- Data de Criação -->
                             <td class="p-4 text-estokei-textMuted whitespace-nowrap">
                                 <?php echo date('d/m/Y H:i', strtotime($fornecedor['criado_em'])); ?>
+                            </td>
+
+                            <!-- Ações -->
+                            <td class="p-4 text-estokei-textMuted whitespace-nowrap">
+                                <a href="index.php?page=atualizar_fornecedor.php&id=<?php echo $fornecedor['id']; ?>">
+                                    Editar
+                                </a>
+                                <a href="api/delete.php?table=fornecedores&id=<?php echo $fornecedor['id']; ?>">
+                                    Excluir
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

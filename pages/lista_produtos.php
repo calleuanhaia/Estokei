@@ -32,6 +32,7 @@
                     <th class="p-4 font-semibold whitespace-nowrap">Venda</th>
                     <th class="p-4 font-semibold whitespace-nowrap">Localização</th>
                     <th class="p-4 font-semibold whitespace-nowrap">Datas</th>
+                    <th class="p-4 font-semibold whitespace-nowrap">Ações</th>
                 </tr>
             </thead>
             <tbody class="divide-y divide-white/5 text-sm">
@@ -108,6 +109,16 @@
                                 <div title="Atualizado em">
                                     <span class="opacity-50">A:</span> <?php echo date('d/m/Y H:i', strtotime($produto['atualizado_em'])); ?>
                                 </div>
+                            </td>
+
+                            <!-- Ações -->
+                            <td class="p-4 text-estokei-textMuted whitespace-nowrap">
+                                <a href="index.php?page=atualizar_produto.php&id=<?php echo $produto['id']; ?>">
+                                    Editar
+                                </a>
+                                <a href="api/delete.php?table=produtos&id=<?php echo $produto['id']; ?>">
+                                    Excluir
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

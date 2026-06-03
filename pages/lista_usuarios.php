@@ -69,6 +69,16 @@
                                     echo date('d/m/Y H:i', strtotime($usuario['criado_em'])); 
                                 ?>
                             </td>
+
+                            <!-- Ações -->
+                            <td class="p-4 text-estokei-textMuted whitespace-nowrap">
+                                <a href="index.php?page=atualizar_usuario.php&id=<?php echo $usuario['id']; ?>">
+                                    Editar
+                                </a>
+                                <a href="api/delete.php?table=usuarios&id=<?php echo $usuario['id']; ?>">
+                                    Excluir
+                                </a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
